@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="listaTelefonica">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista telefonica</title>
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="lib/angular/angular.js"></script>
+    <script src="modulo/listaTelefonica.js"></script>
+    <script src="controller/listaTelefonicaCtrl.js"></script>
+
+
+</head>
+    <body ng-controller="listaTelefonicaCtrl">
+
+        <div class="jumbotron">
+            <h4 ng-bind="app"></h4>
+
+            <divc class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th></th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Operadora</th>
+                    <th>Codigo</th>
+
+                </tr>
+                </thead>
+
+                <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
+                    <td><input type="checkbox" ng-model="contato.selecionado"></td>
+                    <td>{{contato.nome}}</td>
+                    <td>{{contato.telefone}}</td>
+                    <td>{{contato.operadoras.nome}}</td>
+                    <td >{{contato.operadoras.codigo}}</td>
+                </tr>
+            </table>
+            </divc>
+            <hr/>
+
+            <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome">
+            <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone">
+            <select class="form-control" ng-model="contato.operadoras" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
+                <option value="">Selecione a operadora</option>
+            </select>
+
+            <button class="btn btn-primary btn-block botao1" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone" >Adicionar Contato</button>
+            <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)">Apagar Contato</button>
+
+
+
+        </div>
+    </body>
+</html>

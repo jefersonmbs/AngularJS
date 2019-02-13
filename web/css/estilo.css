@@ -1,0 +1,32 @@
+.jumbotron{
+    width: 27%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+}
+h4 {
+
+    font-weight: bold;
+}
+
+.table{
+
+    margin-top: 5%;
+}
+.form-control{
+    margin-top: 2%;
+}
+
+.botao1, .botao1.disabled, .botao1:disabled,.botao1.hover, .botao1:hover{
+    margin-top: 3%;
+    color: #fff;
+    background-color: #000000;
+    border-color: #000000;
+}
+.selecionado{
+
+    background-color: #b8daff;
+    opacity: 0.5%;
+
+}

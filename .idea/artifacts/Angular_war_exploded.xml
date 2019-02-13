@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Angular:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Angular_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Angular/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Angular" />
+          <element id="library" level="application" name="angular" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
