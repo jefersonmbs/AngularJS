@@ -11,49 +11,54 @@
 
 
 </head>
-    <body ng-controller="listaTelefonicaCtrl">
+<body ng-controller="listaTelefonicaCtrl">
 
-        <div class="jumbotron">
-            <h4 ng-bind="app"></h4>
+<div class="jumbotron">
+    <h4 ng-bind="app"></h4>
 
-            <divc class="table-responsive">
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th></th>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Operadora</th>
-                    <th>Codigo</th>
+    <divc class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th></th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Operadora</th>
+                <th>Codigo</th>
 
-                </tr>
-                </thead>
+            </tr>
+            </thead>
 
-                <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
-                    <td><input type="checkbox" ng-model="contato.selecionado"></td>
-                    <td>{{contato.nome}}</td>
-                    <td>{{contato.telefone}}</td>
-                    <td>{{contato.operadoras.nome}}</td>
-                    <td >{{contato.operadoras.codigo}}</td>
-                </tr>
-            </table>
-            </divc>
-            <hr/>
+            <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
+                <td><input type="checkbox" ng-model="contato.selecionado"></td>
+                <td>{{contato.nome}}</td>
+                <td>{{contato.telefone}}</td>
+                <td>{{contato.operadoras.nome}}</td>
+                <td>{{contato.operadoras.codigo}}</td>
+            </tr>
+        </table>
+    </divc>
+    <hr/>
+    <form name="contatoForm">
+        <input class="form-control" ng-model="contato.nome" ng-required="true" placeholder="Nome" type="text">
+        <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone">
+        <select class="form-control" ng-model="contato.operadoras"
+                ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
+            <option value="">Selecione a operadora</option>
+        </select>
+    </form>
 
-            <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome">
-            <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone">
-            <select class="form-control" ng-model="contato.operadoras" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
-                <option value="">Selecione a operadora</option>
-            </select>
-
-            <button class="btn btn-primary btn-block botao1" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone" >Adicionar Contato</button>
-            <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)">Apagar Contato</button>
+    <button class="btn btn-primary btn-block botao1" ng-click="adicionarContato(contato)"
+            ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato
+    </button>
+    <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)">
+        Apagar Contato
+    </button>
 
 
-
-        </div>
-    <div style="text-align: center;">
-        Criado por Xtrapp
-    </div>
-    </body>
+</div>
+<div style="text-align: center;">
+    Criado por Xtrapp
+</div>
+</body>
 </html>
