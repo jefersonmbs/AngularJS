@@ -46,7 +46,7 @@
     <form name="contatoForm">
         <input class="form-control" ng-model="contato.nome" name="nome" ng-required="true" placeholder="Nome" type="text" ng-minlength="4">
         <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" ng-required="true"
-               placeholder="Telefone" ng-minlength="8">
+               placeholder="Telefone" ng-minlength="8" ng-pattern="/^\d{4,5}-\d{4}$/">
         <select class="form-control" ng-model="contato.operadoras" ng-required="true" name="op"
                 ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
             <option value="">Selecione a operadora</option>
@@ -69,6 +69,11 @@
     </div>
     <div ng-show="contatoForm.telefone.$error.minlength && contatoForm.telefone.$dirty" class="alert alert-danger div1">
         Campo telefone deve ter no minimo 8 numeros<br/>
+
+    </div>
+
+    <div ng-show="contatoForm.telefone.$error.pattern && contatoForm.telefone.$dirty" class="alert alert-danger div1">
+        Campo telefone deve ter somente numero e de 8 a 9 Digitos xxxx-xxxx<br/>
 
     </div>
 
