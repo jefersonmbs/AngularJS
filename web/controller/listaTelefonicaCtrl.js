@@ -26,6 +26,7 @@ app.controller("listaTelefonicaCtrl", function ($scope) {
 
         $scope.contatos.push(angular.copy(contato));
         delete $scope.contato;
+        $scope.contatoForm.$setPristine();
 
     };
 
