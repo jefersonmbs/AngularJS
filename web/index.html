@@ -42,25 +42,30 @@
 
     é invalido: {{contatoForm.$invalid}}<br/>
     <form name="contatoForm">
-        <input class="form-control" ng-model="contato.nome" name="nome" ng-required="true" placeholder="Nome" type="text">
-        <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" ng-required="true" placeholder="Telefone">
+        <input class="form-control" ng-model="contato.nome" name="nome" ng-required="true" placeholder="Nome" type="text" ng-minlength="4">
+        <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" ng-required="true" placeholder="Telefone" >
         <select class="form-control" ng-model="contato.operadoras" ng-required="true" name="op"
                 ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
             <option value="">Selecione a operadora</option>
         </select>
     </form>
 
-    <div ng-show="contatoForm.nome.$invalid && contatoForm.nome.$dirty"  class="alert alert-danger div1">
+    <div ng-show="contatoForm.nome.$error.required && contatoForm.nome.$dirty"  class="alert alert-danger div1">
         Nome obrigatório<br/>
 
     </div>
 
-    <div ng-show="contatoForm.telefone.$invalid && contatoForm.telefone.$dirty"  class="alert alert-danger">
+    <div ng-show="contatoForm.nome.$error.minlength && contatoForm.nome.$dirty"  class="alert alert-danger div1">
+        Campo nome deve ter no minimo 4 caracter<br/>
+
+    </div>
+
+    <div ng-show="contatoForm.telefone.$invalid && contatoForm.telefone.$dirty"  class="alert alert-danger div1">
         Telefone obrigatório<br/>
 
     </div>
 
-    <div ng-show="contatoForm.op.$invalid && contatoForm.op.$dirty"  class="alert alert-danger">
+    <div ng-show="contatoForm.op.$invalid && contatoForm.op.$dirty"  class="alert alert-danger div1">
         Operadora Obrigatório<br/>
 
     </div>
