@@ -42,17 +42,27 @@
 
     é invalido: {{contatoForm.$invalid}}<br/>
     <form name="contatoForm">
-        <input class="form-control" ng-model="contato.nome" ng-required="true" placeholder="Nome" type="text">
-        <input class="form-control" type="text" ng-model="contato.telefone" ng-required="true" placeholder="Telefone">
-        <select class="form-control" ng-model="contato.operadoras" ng-required="true"
+        <input class="form-control" ng-model="contato.nome" name="nome" ng-required="true" placeholder="Nome" type="text">
+        <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" ng-required="true" placeholder="Telefone">
+        <select class="form-control" ng-model="contato.operadoras" ng-required="true" name="op"
                 ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
             <option value="">Selecione a operadora</option>
         </select>
     </form>
 
-    <br class="alert alert-danger">
-        Nome Obrigatório<br/>
-        Telefone e operadora Obrigatório<br/>
+    <div ng-show="contatoForm.nome.$invalid"  class="alert alert-danger">
+        Nome obrigatório<br/>
+
+    </div>
+
+    <div ng-show="contatoForm.telefone.$invalid"  class="alert alert-danger">
+        Telefone obrigatório<br/>
+
+    </div>
+
+    <div ng-show="contatoForm.op.$invalid"  class="alert alert-danger">
+        Operadora Obrigatório<br/>
+
     </div>
 
     <button class="btn btn-primary btn-block botao1" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid"
