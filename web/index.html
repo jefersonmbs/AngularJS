@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="css/estilo.css">
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-messages.js"></script>
+    <script src="lib/angular-input-masks-standalone.min.js"></script>
     <script src="modulo/listaTelefonica.js"></script>
     <script src="controller/listaTelefonicaCtrl.js"></script>
+
 
 
 </head>
@@ -35,7 +37,7 @@
                 <td><input type="checkbox" ng-model="contato.selecionado"></td>
                 <td>{{contato.nome}}</td>
                 <td>{{contato.operadoras.codigo}}</td>
-                <td>{{contato.telefone}}</td>
+                <td> {{contato.telefone}} </td>
                 <td>{{contato.operadoras.nome}}</td>
 
             </tr>
@@ -43,11 +45,11 @@
     </divc>
     <hr/>
 
-    é invalido: {{contatoForm.$invalid}}<br/>
+
     <form name="contatoForm">
         <input class="form-control" ng-model="contato.nome" name="nome" ng-required="true" placeholder="Nome" type="text" ng-minlength="4">
-        <input class="form-control" type="text" ng-model="contato.telefone" name="telefone" ng-required="true"
-               placeholder="Telefone" ng-minlength="8" ng-pattern="/^\d{4,5}-\d{4}$/">
+        <input class="form-control" type="text" ng-model="contato.telefone" ui-br-phone-number-mask="areaCode"  name="telefone" ng-required="true"
+               placeholder="Telefone" ng-minlength="8"  >
         <select class="form-control" ng-model="contato.operadoras" ng-required="true" name="op"
                 ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
             <option value="">Selecione a operadora</option>
@@ -69,11 +71,6 @@
         </div>
         <div ng-show="contatoForm.telefone.$error.minlength && contatoForm.telefone.$dirty" class="alert alert-danger div1">
             Campo telefone deve ter no minimo 8 numeros<br/>
-
-        </div>
-
-        <div ng-show="contatoForm.telefone.$error.pattern && contatoForm.telefone.$dirty" class="alert alert-danger div1">
-            Campo telefone deve ter somente numero e de 8 a 9 Digitos xxxx-xxxx<br/>
 
         </div>
 

@@ -1,3 +1,3 @@
-var app = angular.module("listaTelefonica", ["ngMessages"]);
+var app = angular.module("listaTelefonica", ["ngMessages",'ui.utils.masks']);
 
 
